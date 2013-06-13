@@ -1,0 +1,16 @@
+{
+  "name": "capshare",
+  "version": "0.0.1",
+  "description": "Automatic image uploads to an s3 bucket then add url to clipboard",
+  "main": "index.js",
+  "bin": {
+    "capshare": "./index.js"
+  },
+  "dependencies": {
+    "watch": "git://github.com/ggordan/watch.git#master",
+    "knox": "*"
+  },
+  "repository": "",
+  "author": "bhelx@freenode",
+  "license": "MIT"
+}
