@@ -79,6 +79,6 @@ Now if you take a screencap you will almost immediately have an https link in yo
 * more content types
 * better installation process
 * error handling
-
+* integrate with os x notifications or growl
 
 
