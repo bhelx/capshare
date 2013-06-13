@@ -57,7 +57,7 @@ which capshare
 
 You also may want to consider creating a user in s3 for specifically accessing your bucket so it will be easy to revoke.
 
-Now to laucnh the daemon
+Now to launch the daemon
 
 ```bash
 launchctl load ~/Library/LaunchAgents/com.bhelx.capshare.plist
