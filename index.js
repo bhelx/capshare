@@ -19,11 +19,6 @@ var contentTypes = {
   '.png': 'image/png'
 };
 
-function copyToClipboard(err, resp) {
-  console.log(resp.body)
-  console.log(arguments);
-}
-
 watch.createMonitor('/Users/beckel/Pictures/screens', function (monitor) {
   monitor.on('created', function (f, stat) {
 
