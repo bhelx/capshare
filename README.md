@@ -73,3 +73,12 @@ launchctl unload ~/Library/LaunchAgents/com.bhelx.capshare.plist
 
 Now if you take a screencap you will almost immediately have an https link in your copy buffer so you can paste to whoever you need to share with.
 
+## TODO
+
+* support linux
+* more content types
+* better installation process
+* error handling
+
+
+
