@@ -33,7 +33,7 @@ Here I am using *~/Pictures/capshare*.
 Then you will want to setup the launchd config:
 
 ```bash
-curl http://raw.githiub.... > ~/Library/LaunchAgents/com.bhelx.capshare.plist
+curl https://raw.github.com/bhelx/capshare/master/config/osx/com.bhelx.capshare.plist.template > ~/Library/LaunchAgents/com.bhelx.capshare.plist
 ```
 
 Edit these fields in that file:
