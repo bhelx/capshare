@@ -1,10 +1,10 @@
-# CapShare
+# capshare
 
-Capshare is a really fast way to share a screencapture. It's a background daemon for OS X so once you set it up it's always running.
+capshare is a really fast way to share a screencapture. It's a background daemon for OS X so once you set it up it's always running.
 
 ## How it works
 
-The CapShare daemon watches a specified folder on your machine. When a file is added to that folder it immediately uploads the file to an s3 bucket and copies the https link to your clipboard.
+The capshare daemon watches a specified folder on your machine. When a file is added to that folder it immediately uploads the file to an s3 bucket and copies the https link to your clipboard.
 
 Because it's just a folder it will also work if you drag or copy an image to that folder.
 
