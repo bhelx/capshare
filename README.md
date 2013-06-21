@@ -49,7 +49,7 @@ Edit these fields in that file:
     </array>
 ```
 
-You might want to ensure the capshare binry is where I think it is with:
+You might want to ensure the capshare binary is where I think it is with:
 
 ```bash
 which capshare
