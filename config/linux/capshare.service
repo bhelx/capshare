@@ -1,0 +1,9 @@
+[Unit]
+Description=Watches a folder to upload screenshots within to an Amazon S3 bucket and copies a link to your clipboard
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/capshare {{absolute_path_to_capshare_directory}} {{bucket}} {{s3_access_key}} {{s3_secret}}
+
+[Install]
+WantedBy=multi-user.target

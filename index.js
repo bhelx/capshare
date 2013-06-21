@@ -38,3 +38,8 @@ watch.createMonitor(process.argv[2], function (monitor) {
     });
   });
 });
+
+// graceful exit on SIGTERM
+process.on('SIGTERM', function() {
+  process.exit();
+});
