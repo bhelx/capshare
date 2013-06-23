@@ -12,7 +12,7 @@ Because it's just a folder it will also work if you drag or copy an image to tha
 
 * Node.js
 * An s3 bucket
-* OS X
+* OS X or Linux
 
 ## Installation
 
@@ -66,7 +66,7 @@ launchctl unload ~/Library/LaunchAgents/com.bhelx.capshare.plist
 
 ### Linux(systemd)
 
-Linux support only exists right now for systemd users. You'll also need to ensure your system is setup to have a user instance of system running.
+Linux support only exists right now for systemd users. You'll also need to ensure your system is setup to have a user instance of systemd running.
 
 First, download and edit the capshare.service file:
 
@@ -74,26 +74,19 @@ First, download and edit the capshare.service file:
 curl https://raw.github.com/bhelx/capshare/master/config/linux/capshare.service > ~/.config/systemd/user/capshare.service
 ```
 
-Edit these fields in that file:
+Edit this line in that file:
 
-```xml
-    <key>ProgramArguments</key>
-    <array>
-      <string>/usr/local/bin/capshare</string>
-      <string>{{absolute_path_to_capshare_folder}}</string>
-      <string>{{bucket_name}}</string>
-      <string>{{s3_access_id}}</string>
-      <string>{{s3_secret}}</string>
-    </array>
+```
+ExecStart=/usr/local/bin/capshare {{absolute_path_to_capshare_directory}} {{bucket}} {{s3_access_key}} {{s3_secret}}
 ```
 
-Use systemctl to start capshare
+Use systemctl to start capshare:
 
 ```bash
 systemctl --user start capshare
 ```
 
-You can stop is as needed
+You can stop is as needed:
 
 ```bash
 systemctl --user stop capshare
