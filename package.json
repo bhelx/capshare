@@ -1,6 +1,6 @@
 {
   "name": "capshare",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Automatic image uploads to an s3 bucket then add url to clipboard",
   "main": "index.js",
   "bin": {
