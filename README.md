@@ -12,17 +12,21 @@ Because it's just a folder it will also work if you drag or copy an image to tha
 
 * Node.js
 * An s3 bucket
-* OS X
+* OS X or Linux
 
-## Setup
+## Installation
 
-First install the capshare binary.
+Use npm to install the capshare binary
 
 ```bash
 npm install -g capshare
 ```
 
-Next thing you will want to do is change the folder where your screen captures are saved.
+## Setup
+
+### OS X
+
+You'll want to change the folder where your screen captures are saved.
 
 ```bash
 defaults write com.apple.screencapture location ~/Pictures/capshare && killall SystemUIServer
@@ -48,15 +52,6 @@ Edit these fields in that file:
       <string>{{s3_secret}}</string>
     </array>
 ```
-
-You might want to ensure the capshare binary is where I think it is with:
-
-```bash
-which capshare
-```
-
-You also may want to consider creating a user in s3 for specifically accessing your bucket so it will be easy to revoke.
-
 Now to launch the daemon
 
 ```bash
@@ -69,13 +64,51 @@ If you need to stop it at any point you can do so with unload
 launchctl unload ~/Library/LaunchAgents/com.bhelx.capshare.plist
 ```
 
+### Linux(systemd)
+
+Linux support only exists right now for systemd users. You'll also need to ensure your system is setup to have a user instance of systemd running.
+
+First, download and edit the capshare.service file:
+
+```bash
+curl https://raw.github.com/bhelx/capshare/master/config/linux/capshare.service > ~/.config/systemd/user/capshare.service
+```
+
+Edit this line in that file:
+
+```
+ExecStart=/usr/local/bin/capshare {{absolute_path_to_capshare_directory}} {{bucket}} {{s3_access_key}} {{s3_secret}}
+```
+
+Use systemctl to start capshare:
+
+```bash
+systemctl --user start capshare
+```
+
+You can stop is as needed:
+
+```bash
+systemctl --user stop capshare
+```
+
+## Final Steps
+
+You might want to ensure the capshare binary is where I think it is with:
+
+```bash
+which capshare
+```
+
+You also may want to consider creating a user in s3 for specifically accessing your bucket so it will be easy to revoke.
+
 ## Done
 
 Now if you take a screencap you will almost immediately have an https link in your copy buffer so you can paste to whoever you need to share with.
 
 ## TODO
 
-* support linux
+* support other linux init systems
 * more content types
 * better installation process
 * error handling

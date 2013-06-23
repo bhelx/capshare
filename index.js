@@ -15,6 +15,12 @@ var knoxClient = knox.createClient({
   , secret: process.argv[5]
 });
 
+// determine which shell command to use for [clipboard] copying
+var copyCmd = {
+  linux:  'xclip -selection CLIPBOARD',
+  darwin: 'pbcopy'
+}[process.platform];
+
 watch.createMonitor(process.argv[2], function (monitor) {
   monitor.on('created', function (f, stats) {
 
@@ -28,7 +34,12 @@ watch.createMonitor(process.argv[2], function (monitor) {
     }, function (err, resp) {
       console.log(req.url);
 
-      sys.exec('echo ' + req.url + ' | pbcopy');
+      sys.exec('echo ' + req.url + ' | ' + copyCmd);
     });
   });
+});
+
+// graceful exit on SIGTERM
+process.on('SIGTERM', function() {
+  process.exit();
 });
