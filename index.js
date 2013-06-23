@@ -16,10 +16,10 @@ var knoxClient = knox.createClient({
 });
 
 // determine which shell command to use for [clipboard] copying
-var copyCmd = (function() {
-  var commands = {linux: 'xclip -selection CLIPBOARD', darwin: 'pbcopy'};
-  return commands[process.platform];
-})();
+var copyCmd = {
+  linux:  'xclip -selection CLIPBOARD',
+  darwin: 'pbcopy'
+}[process.platform];
 
 watch.createMonitor(process.argv[2], function (monitor) {
   monitor.on('created', function (f, stats) {
